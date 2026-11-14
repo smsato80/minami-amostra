@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minami Service, Kosai | Amostra SatoTech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0d;--panel:#151517;--panel2:#1c1c1f;--line:#2a2a2e;--bone:#f2efe6;--mut:#a9a49a;--gold:#c9a86a;--gold2:#e3c88f;--green:#25d366;--red:#e4572e}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--bone);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+h1,h2,h3,.osw{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.topbar-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 18px;max-width:1120px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand .kanji{font-family:'Oswald',sans-serif;font-size:26px;color:var(--gold);border:2px solid var(--gold);width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex:none}
+.brand b{font-family:'Oswald',sans-serif;font-size:19px;letter-spacing:.04em;display:block;line-height:1.05}
+.brand small{color:var(--mut);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.switch{display:flex;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.switch button{background:transparent;border:0;color:var(--mut);font-family:'Barlow',sans-serif;font-weight:600;font-size:14px;padding:7px 14px;border-radius:999px;cursor:pointer}
+.switch button.on{background:var(--gold);color:#141310}
+.langs{display:flex;gap:6px;flex-wrap:wrap}
+.langs button{background:var(--panel2);border:1px solid var(--line);color:var(--mut);font-family:'Barlow',sans-serif;font-weight:600;font-size:13px;padding:7px 11px;border-radius:999px;cursor:pointer}
+.langs button.on{border-color:var(--gold);color:var(--gold2)}
+.hero{padding:44px 0 10px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.kicker{color:var(--gold);font-weight:700;letter-spacing:.18em;font-size:13px;text-transform:uppercase}
+.hero h1{font-size:clamp(30px,5.4vw,52px);line-height:1.08;margin:12px 0 14px}
+.hero p{color:var(--mut);font-size:18px;max-width:52ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:'Barlow',sans-serif}
+.btn-gold{background:var(--gold);color:#141310}
+.btn-ghost{background:transparent;color:var(--bone);border-color:var(--line)}
+.btn-wa{background:var(--green);color:#0c2317}
+.hero-img{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.hero-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0 6px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{font-family:'Oswald',sans-serif;font-size:28px;color:var(--gold2);display:block;line-height:1}
+.stat span{color:var(--mut);font-size:13.5px}
+section{padding:40px 0 8px}
+.sec-head h2{font-size:clamp(24px,3.6vw,34px)}
+.sec-head p{color:var(--mut);margin-top:6px;max-width:66ch}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.tools input{flex:1 1 220px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--bone);padding:12px 14px;font-size:15px;font-family:'Barlow',sans-serif}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:9px 14px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;font-family:'Barlow',sans-serif}
+.chips button.on{background:var(--gold);border-color:var(--gold);color:#141310}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{position:relative}
+.card .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:rgba(11,11,13,.88);color:var(--gold2);border:1px solid var(--gold);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em}
+.card .bd{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:19px;line-height:1.2;text-transform:none;font-family:'Barlow',sans-serif;font-weight:700;letter-spacing:0}
+.price{font-family:'Oswald',sans-serif;font-size:26px;color:var(--gold2)}
+.meta{color:var(--mut);font-size:14px}
+.feats{display:flex;gap:6px;flex-wrap:wrap}
+.feats span{background:var(--panel2);border:1px solid var(--line);color:var(--mut);font-size:12.5px;padding:4px 9px;border-radius:999px}
+.card .btn{margin-top:auto;justify-content:center}
+.fin{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.fin ul{list-style:none;margin-top:14px;display:grid;gap:9px}
+.fin li{padding-left:24px;position:relative;color:var(--bone)}
+.fin li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+form{display:grid;gap:11px}
+label{font-size:13.5px;color:var(--mut);font-weight:600;display:grid;gap:5px}
+input,select{background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--bone);padding:11px 12px;font-size:15px;font-family:'Barlow',sans-serif;width:100%}
+.form-note{font-size:12.5px;color:var(--mut)}
+.form-ok{display:none;background:#12351f;border:1px solid #1f7a44;color:#b9f4cd;border-radius:10px;padding:12px 14px;font-size:14.5px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.svc b{font-size:16.5px;display:block}
+.svc span{color:var(--mut);font-size:14px}
+.rev{background:linear-gradient(135deg,#191712,#101013);border:1px solid var(--gold);border-radius:18px;padding:26px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.rev .big{font-family:'Oswald',sans-serif;font-size:44px;color:var(--gold2);line-height:1}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.contact .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.contact b{display:block;margin-bottom:5px;color:var(--gold2);text-transform:uppercase;font-size:13px;letter-spacing:.1em}
+.contact span{color:var(--mut);font-size:15px}
+footer{border-top:1px solid var(--line);margin-top:46px;padding:22px 0 34px;color:var(--mut);font-size:13px}
+.view{display:none}
+.view.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi b{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold2);display:block;line-height:1}
+.kpi span{color:var(--mut);font-size:13.5px}
+.demo-tag{display:inline-block;background:#2a2113;border:1px solid var(--gold);color:var(--gold2);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.panel h3{font-size:18px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td,th{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mut);font-size:12.5px;text-transform:uppercase;letter-spacing:.07em}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill-new{background:#233046;color:#a9c6f5}.pill-an{background:#3a2f14;color:#f0d48a}.pill-ap{background:#14331e;color:#9fe8b4}.pill-sold{background:#3a1d12;color:#f5b08a}
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fcol{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.fcol h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:9px}
+.fcol .item{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 10px;font-size:13.5px;margin-bottom:8px}
+.agenda{list-style:none;display:grid;gap:9px}
+.agenda li{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14.5px}
+.agenda b{color:var(--gold2)}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.check{list-style:none;display:grid;gap:10px}
+.check li{padding-left:26px;position:relative}
+.check li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.steps{list-style:none;display:grid;gap:12px;counter-reset:st}
+.steps li{padding-left:40px;position:relative}
+.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:-2px;width:27px;height:27px;border-radius:50%;background:var(--gold);color:#141310;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.price-box{border:1px solid var(--gold);border-radius:16px;padding:22px;background:#171410;margin-top:16px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}.svc-grid{grid-template-columns:repeat(2,1fr)}.funnel{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.hero-grid,.fin,.panels,.prop-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px}.stat b{font-size:21px}.contact{grid-template-columns:1fr}.svc-grid{grid-template-columns:1fr}.topbar-in{padding:10px 12px}.brand{margin-right:0;width:100%}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <div class="kanji">南</div>
+      <div><b>MINAMI SERVICE</b><small>Kosai · Shizuoka</small></div>
+    </div>
+    <nav class="switch" aria-label="Views">
+      <button id="sw-site" class="on" onclick="showView('site')" data-i18n="t_site">Site</button>
+      <button id="sw-aios" onclick="showView('aios')" data-i18n="t_aios">AIOS</button>
+      <button id="sw-prop" onclick="showView('prop')" data-i18n="t_prop">Proposta</button>
+    </nav>
+    <div class="langs" aria-label="Language">
+      <button data-lang="pt" class="on" onclick="setLang('pt')">Português</button>
+      <button data-lang="en" onclick="setLang('en')">English</button>
+      <button data-lang="ja" onclick="setLang('ja')">日本語</button>
+      <button data-lang="es" onclick="setLang('es')">Español</button>
+      <button data-lang="tl" onclick="setLang('tl')">Tagalog</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SITE VIEW ============ -->
+<main id="view-site" class="view on">
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker" data-i18n="hero_kicker">Kosai · Shizuoka · desde 2014</div>
+          <h1 data-i18n="hero_title">Carros seminovos em Kosai, com financiamento próprio</h1>
+          <p data-i18n="hero_sub">Sem visto permanente e sem fiador, com análise rápida. E a mesma loja cuida de mecânica, shaken e aluguel de carros.</p>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="#estoque" data-i18n="hero_cta1">Ver o estoque</a>
+            <a class="btn btn-ghost" href="#financiamento" data-i18n="hero_cta2">Simular financiamento</a>
+          </div>
+        </div>
+        <div class="hero-img"><img src="img/tanto.jpg" alt="Daihatsu Tanto Custom no pátio"></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>4,9 ★</b><span data-i18n="stat1">nota no Google, 33 avaliações</span></div>
+        <div class="stat"><b>2014</b><span data-i18n="stat2">vendendo e cuidando de carros na região</span></div>
+        <div class="stat"><b>6</b><span data-i18n="stat3">carros nesta amostra de estoque</span></div>
+      </div>
+    </div>
+
+    <section id="estoque">
+      <div class="sec-head">
+        <h2 data-i18n="stock_title">Estoque</h2>
+        <p data-i18n="stock_sub">Carros e preços dos anúncios reais da loja no Instagram. Na versão final, cada carro entra com as fotos tiradas no pátio e sai do site na hora que vende.</p>
+      </div>
+      <div class="tools">
+        <input id="q" type="search" data-i18n-ph="search_ph" placeholder="Buscar por modelo..." oninput="renderCars()">
+      </div>
+      <div class="chips" id="cat-chips" style="margin-bottom:18px">
+        <button data-cat="all" class="on" onclick="setCat('all')" data-i18n="f_all">Todos</button>
+        <button data-cat="kei" onclick="setCat('kei')" data-i18n="f_kei">Kei</button>
+        <button data-cat="compact" onclick="setCat('compact')" data-i18n="f_compact">Compactos</button>
+        <button data-cat="sedan" onclick="setCat('sedan')" data-i18n="f_sedan">Sedã</button>
+        <button data-cat="van" onclick="setCat('van')" data-i18n="f_van">Van / trabalho</button>
+        <button data-cat="ev" onclick="setCat('ev')" data-i18n="f_ev">Elétrico</button>
+      </div>
+      <div class="grid" id="cars"></div>
+      <p id="no-cars" class="form-note" style="display:none;margin-top:14px" data-i18n="no_cars">Nenhum carro encontrado nessa busca.</p>
+    </section>
+
+    <section id="financiamento">
+      <div class="fin">
+        <div>
+          <h2 data-i18n="fin_title">Financiamento sem visto permanente</h2>
+          <p style="color:var(--mut);margin-top:8px" data-i18n="fin_sub">Preencha a pré análise ao lado. A loja responde pelo WhatsApp com o resultado e as condições.</p>
+          <ul>
+            <li data-i18n="fin_p1">Financiamento próprio e japonês</li>
+            <li data-i18n="fin_p2">Sem fiador</li>
+            <li data-i18n="fin_p3">Análise direto com a loja, sem burocracia de banco</li>
+          </ul>
+        </div>
+        <form id="fin-form" onsubmit="return submitFin(event)">
+          <label><span data-i18n="fm_name">Nome</span><input required id="fm-name" autocomplete="name"></label>
+          <label><span data-i18n="fm_wa">WhatsApp</span><input required id="fm-phone" inputmode="tel" placeholder="090-0000-0000"></label>
+          <label><span data-i18n="fm_visa">Tipo de visto</span>
+            <select id="fm-visa">
+              <option value="perm" data-i18n="v_perm">Permanente</option>
+              <option value="long" data-i18n="v_long">Longa duração (Teijusha)</option>
+              <option value="spouse" data-i18n="v_spouse">Cônjuge de japonês ou permanente</option>
+              <option value="work" data-i18n="v_work">Trabalho</option>
+              <option value="other" data-i18n="v_other">Outro</option>
+            </select></label>
+          <label><span data-i18n="fm_time">Tempo de Japão</span>
+            <select id="fm-time">
+              <option value="t1" data-i18n="tm_1">Menos de 1 ano</option>
+              <option value="t13" data-i18n="tm_13">1 a 3 anos</option>
+              <option value="t35" data-i18n="tm_35">3 a 5 anos</option>
+              <option value="t5" data-i18n="tm_5">Mais de 5 anos</option>
+            </select></label>
+          <label><span data-i18n="fm_guar">Tem fiador?</span>
+            <select id="fm-guar">
+              <option value="no" data-i18n="no">Não</option>
+              <option value="yes" data-i18n="yes">Sim</option>
+            </select></label>
+          <label><span data-i18n="fm_down">Entrada (¥)</span><input id="fm-down" inputmode="numeric" placeholder="100.000"></label>
+          <label><span data-i18n="fm_car">Carro de interesse</span><select id="fm-car"></select></label>
+          <button class="btn btn-gold" type="submit" data-i18n="fm_send">Enviar pré análise</button>
+          <div class="form-ok" id="fin-ok" data-i18n="form_ok">Recebido. Na versão real, este pedido cai no AIOS da loja e a resposta vai pro seu WhatsApp.</div>
+          <p class="form-note" data-i18n="form_note">Amostra SatoTech: o envio é simulado. Nada é gravado nem enviado de verdade.</p>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2 data-i18n="svc_title">A loja também faz</h2></div>
+      <div class="svc-grid">
+        <div class="svc"><b data-i18n="sv_mech">Mecânica geral</b><span data-i18n="sv_mech_d">Manutenção e reparo do seu carro</span></div>
+        <div class="svc"><b data-i18n="sv_shaken">Shaken e transferência</b><span data-i18n="sv_shaken_d">Documentação resolvida na loja</span></div>
+        <div class="svc"><b data-i18n="sv_tire">Pneus novos e usados</b><span data-i18n="sv_tire_d">Troca e balanceamento</span></div>
+        <div class="svc"><b data-i18n="sv_rent">Aluguel de carros</b><span data-i18n="sv_rent_d">Pra quando o seu está na oficina</span></div>
+        <div class="svc"><b data-i18n="sv_ins">Seguro de carro</b><span data-i18n="sv_ins_d">Cotação e contratação na loja</span></div>
+        <div class="svc"><b data-i18n="sv_tow">Guincho</b><span data-i18n="sv_tow_d">Socorro quando o carro para</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="rev">
+        <div>
+          <div class="big">4,9 ★</div>
+          <p style="color:var(--mut);max-width:52ch" data-i18n="rev_text">Nota da Minami Service no Google, com 33 avaliações de clientes. Quem comprou, recomenda.</p>
+        </div>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Minami%20Service%20Kosai%20Shizuoka" data-i18n="rev_cta">Ver no Google Maps</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2 data-i18n="ct_title">Fala com a loja</h2></div>
+      <div class="contact">
+        <div class="box"><b data-i18n="ct_addr">Endereço</b><span>〒431-0425 Shizuoka, Kosai-shi, Umeda 37-1</span></div>
+        <div class="box"><b data-i18n="ct_phone">Telefone / WhatsApp</b><span><a href="tel:+819085448882">090-8544-8882</a> · Luciano</span></div>
+        <div class="box"><b data-i18n="ct_hours">Horário</b><span data-i18n="ct_hours_v">Seg a sex 9h às 19h · Sáb 9h às 18h · Dom fechado</span></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/819085448882" data-i18n="ct_wa">Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.instagram.com/minami_service/" data-i18n="ct_ig">Instagram da loja</a>
+      </div>
+    </section>
+
+    <footer>
+      <p data-i18n="foot_note">Amostra feita pela SatoTech com dados públicos da loja (Instagram e Google, novembro de 2026). Fotos ilustrativas dos modelos anunciados. Disponibilidade e valores: confirmar com a loja.</p>
+      <p style="margin-top:6px">MINAMI SERVICE · 南サービス合同会社 · Kosai, Shizuoka</p>
+    </footer>
+  </div>
+</main>
+<!-- ============ AIOS VIEW ============ -->
+<main id="view-aios" class="view">
+  <div class="wrap" style="padding-top:34px">
+    <span class="demo-tag" data-i18n="a_demo">Dados de demonstração</span>
+    <h2 style="font-size:clamp(24px,3.6vw,34px);margin-top:12px" data-i18n="a_title">AIOS da Minami Service</h2>
+    <p style="color:var(--mut);margin-top:6px;max-width:66ch" data-i18n="a_sub">O controle operacional da loja: estoque, interessados, pré análises e agenda da oficina num lugar só.</p>
+    <div class="kpis">
+      <div class="kpi"><b>6</b><span data-i18n="a_k1">carros anunciados</span></div>
+      <div class="kpi"><b>4</b><span data-i18n="a_k2">interessados novos</span></div>
+      <div class="kpi"><b>3</b><span data-i18n="a_k3">pré análises pendentes</span></div>
+      <div class="kpi"><b>2</b><span data-i18n="a_k4">shaken vencendo em 30 dias</span></div>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <h3 data-i18n="a_leads">Interessados (exemplo)</h3>
+        <table>
+          <tr><th data-i18n="a_th_who">Quem</th><th data-i18n="a_th_car">Carro</th><th data-i18n="a_th_st">Etapa</th></tr>
+          <tr><td data-i18n="ld_1">Exemplo: interessado pelo site</td><td>Fit Hybrid</td><td><span class="pill pill-new" data-i18n="st_new">Novo</span></td></tr>
+          <tr><td data-i18n="ld_2">Exemplo: pré análise enviada</td><td>N-BOX Custom</td><td><span class="pill pill-an" data-i18n="st_an">Em análise</span></td></tr>
+          <tr><td data-i18n="ld_3">Exemplo: financiamento aprovado</td><td>Tanto Custom RS</td><td><span class="pill pill-ap" data-i18n="st_ap">Aprovado</span></td></tr>
+          <tr><td data-i18n="ld_4">Exemplo: venda fechada</td><td>Legacy B4</td><td><span class="pill pill-sold" data-i18n="st_sold">Vendido</span></td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3 data-i18n="a_agenda">Agenda da oficina</h3>
+        <ul class="agenda">
+          <li><b data-i18n="ag_1d">Hoje</b> · <span data-i18n="ag_1">Troca de óleo e revisão, cliente da loja</span></li>
+          <li><b data-i18n="ag_2d">Amanhã</b> · <span data-i18n="ag_2">Shaken completo, carro vendido pela loja</span></li>
+          <li><b data-i18n="ag_3d">Em 9 dias</b> · <span data-i18n="ag_3">Shaken vencendo: lembrete já marcado pro cliente</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <h3 data-i18n="a_funnel">Funil de vendas</h3>
+      <div class="funnel">
+        <div class="fcol"><h4 data-i18n="st_new">Novo</h4><div class="item">Fit Hybrid · <span data-i18n="fu_site">veio do site</span></div><div class="item">i-MiEV · <span data-i18n="fu_ig">veio do Instagram</span></div></div>
+        <div class="fcol"><h4 data-i18n="st_an">Em análise</h4><div class="item">N-BOX Custom · <span data-i18n="fu_pre">pré análise enviada</span></div></div>
+        <div class="fcol"><h4 data-i18n="st_ap">Aprovado</h4><div class="item">Tanto Custom RS · <span data-i18n="fu_ok">aguardando entrada</span></div></div>
+        <div class="fcol"><h4 data-i18n="st_sold">Vendido</h4><div class="item">Legacy B4 · <span data-i18n="fu_done">entrega marcada</span></div></div>
+      </div>
+    </div>
+    <footer><p data-i18n="a_foot">Tela de demonstração do AIOS com dados de exemplo. Na versão real, os interessados do site e do formulário entram aqui sozinhos.</p></footer>
+  </div>
+</main>
+
+<!-- ============ PROPOSTA VIEW ============ -->
+<main id="view-prop" class="view">
+  <div class="wrap" style="padding-top:34px">
+    <h2 style="font-size:clamp(24px,3.6vw,34px)" data-i18n="p_title">Proposta SatoTech para a Minami Service</h2>
+    <p style="color:var(--mut);margin-top:6px;max-width:66ch" data-i18n="p_sub">O que a loja ganha, o que entra em cada etapa e o que fica pra depois. Sem promessa além do que está nesta página.</p>
+    <div class="prop-grid">
+      <div class="panel">
+        <h3 data-i18n="p_what">O que entra</h3>
+        <ul class="check">
+          <li data-i18n="p_i1">Site próprio com estoque e uma página pra cada carro</li>
+          <li data-i18n="p_i2">AIOS: o controle operacional da loja, com interessados, pré análises e agenda</li>
+          <li data-i18n="p_i3">Formulário de pré análise de financiamento no site</li>
+          <li data-i18n="p_i4">Link do site na bio do Instagram e no perfil do Google Maps</li>
+          <li data-i18n="p_i5">Página da loja no Facebook, separada do perfil pessoal</li>
+          <li data-i18n="p_i6">Cadastro de carro pelo celular, com status em um toque: disponível, reservado, vendido</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-i18n="p_how">Como funciona</h3>
+        <ul class="steps">
+          <li data-i18n="p_s1">A SatoTech monta tudo com os dados e as fotos da loja</li>
+          <li data-i18n="p_s2">A loja confere a amostra e pede os ajustes</li>
+          <li data-i18n="p_s3">Entra no ar e os interessados passam a chegar organizados</li>
+        </ul>
+        <h3 style="margin-top:22px" data-i18n="p_not_t">O que fica pra depois</h3>
+        <p style="color:var(--mut);font-size:15px" data-i18n="p_not">Atendente automático de WhatsApp é etapa futura, contratada à parte, só depois que a base estiver rodando bem.</p>
+      </div>
+    </div>
+    <div class="price-box">
+      <h3 data-i18n="p_price_t">Valores e prazo</h3>
+      <p style="color:var(--mut);margin-top:6px" data-i18n="p_price">A combinar com a SatoTech nesta conversa. Nenhum valor é cobrado antes da aprovação da amostra final.</p>
+    </div>
+    <footer><p data-i18n="p_foot">Amostra preparada pela SatoTech para avaliação da Minami Service.</p></footer>
+  </div>
+</main>
+
+<script>
+const I18N={
+pt:{t_site:"Site",t_aios:"AIOS",t_prop:"Proposta",hero_kicker:"Kosai · Shizuoka · desde 2014",hero_title:"Carros seminovos em Kosai, com financiamento próprio",hero_sub:"Sem visto permanente e sem fiador, com análise rápida. E a mesma loja cuida de mecânica, shaken e aluguel de carros.",hero_cta1:"Ver o estoque",hero_cta2:"Simular financiamento",stat1:"nota no Google, 33 avaliações",stat2:"vendendo e cuidando de carros na região",stat3:"carros nesta amostra de estoque",stock_title:"Estoque",stock_sub:"Carros e preços dos anúncios reais da loja no Instagram. Na versão final, cada carro entra com as fotos tiradas no pátio e sai do site na hora que vende.",search_ph:"Buscar por modelo...",f_all:"Todos",f_kei:"Kei",f_compact:"Compactos",f_sedan:"Sedã",f_van:"Van / trabalho",f_ev:"Elétrico",no_cars:"Nenhum carro encontrado nessa busca.",status_avail:"Disponível",btn_interest:"Tenho interesse",ft_hybrid:"Híbrido",ft_screen:"Tela multimídia",ft_seats:"Bancos em tecido preto",ft_sliding:"Portas de correr automáticas",ft_cam360:"Câmera 360°",ft_push:"Push start",ft_heated:"Banco aquecido",ft_manual:"Manual 6 marchas",ft_awd:"4x4",ft_leather:"Bancos de couro",ft_camera:"Câmera de ré",ft_turbo:"Turbo",ft_blackroof:"Teto preto",ft_hightop:"Teto alto",ft_workfun:"Trabalho e lazer",ft_electric:"100% elétrico",ft_quiet:"Silencioso",ft_lowcost:"Custo por km baixo",fin_title:"Financiamento sem visto permanente",fin_sub:"Preencha a pré análise ao lado. A loja responde pelo WhatsApp com o resultado e as condições.",fin_p1:"Financiamento próprio e japonês",fin_p2:"Sem fiador",fin_p3:"Análise direto com a loja, sem burocracia de banco",fm_name:"Nome",fm_wa:"WhatsApp",fm_visa:"Tipo de visto",v_perm:"Permanente",v_long:"Longa duração (Teijusha)",v_spouse:"Cônjuge de japonês ou permanente",v_work:"Trabalho",v_other:"Outro",fm_time:"Tempo de Japão",tm_1:"Menos de 1 ano",tm_13:"1 a 3 anos",tm_35:"3 a 5 anos",tm_5:"Mais de 5 anos",fm_guar:"Tem fiador?",yes:"Sim",no:"Não",fm_down:"Entrada (¥)",fm_car:"Carro de interesse",fm_other_car:"Outro carro / ainda não sei",fm_send:"Enviar pré análise",form_ok:"Recebido. Na versão real, este pedido cai no AIOS da loja e a resposta vai pro seu WhatsApp.",form_note:"Amostra SatoTech: o envio é simulado. Nada é gravado nem enviado de verdade.",svc_title:"A loja também faz",sv_mech:"Mecânica geral",sv_mech_d:"Manutenção e reparo do seu carro",sv_shaken:"Shaken e transferência",sv_shaken_d:"Documentação resolvida na loja",sv_tire:"Pneus novos e usados",sv_tire_d:"Troca e balanceamento",sv_rent:"Aluguel de carros",sv_rent_d:"Pra quando o seu está na oficina",sv_ins:"Seguro de carro",sv_ins_d:"Cotação e contratação na loja",sv_tow:"Guincho",sv_tow_d:"Socorro quando o carro para",rev_text:"Nota da Minami Service no Google, com 33 avaliações de clientes. Quem comprou, recomenda.",rev_cta:"Ver no Google Maps",ct_title:"Fala com a loja",ct_addr:"Endereço",ct_phone:"Telefone / WhatsApp",ct_hours:"Horário",ct_hours_v:"Seg a sex 9h às 19h · Sáb 9h às 18h · Dom fechado",ct_wa:"Chamar no WhatsApp",ct_ig:"Instagram da loja",foot_note:"Amostra feita pela SatoTech com dados públicos da loja (Instagram e Google, novembro de 2026). Fotos ilustrativas dos modelos anunciados. Disponibilidade e valores: confirmar com a loja.",a_demo:"Dados de demonstração",a_title:"AIOS da Minami Service",a_sub:"O controle operacional da loja: estoque, interessados, pré análises e agenda da oficina num lugar só.",a_k1:"carros anunciados",a_k2:"interessados novos",a_k3:"pré análises pendentes",a_k4:"shaken vencendo em 30 dias",a_leads:"Interessados (exemplo)",a_th_who:"Quem",a_th_car:"Carro",a_th_st:"Etapa",ld_1:"Exemplo: interessado pelo site",ld_2:"Exemplo: pré análise enviada",ld_3:"Exemplo: financiamento aprovado",ld_4:"Exemplo: venda fechada",st_new:"Novo",st_an:"Em análise",st_ap:"Aprovado",st_sold:"Vendido",a_agenda:"Agenda da oficina",ag_1d:"Hoje",ag_1:"Troca de óleo e revisão, cliente da loja",ag_2d:"Amanhã",ag_2:"Shaken completo, carro vendido pela loja",ag_3d:"Em 9 dias",ag_3:"Shaken vencendo: lembrete já marcado pro cliente",a_funnel:"Funil de vendas",fu_site:"veio do site",fu_ig:"veio do Instagram",fu_pre:"pré análise enviada",fu_ok:"aguardando entrada",fu_done:"entrega marcada",a_foot:"Tela de demonstração do AIOS com dados de exemplo. Na versão real, os interessados do site e do formulário entram aqui sozinhos.",p_title:"Proposta SatoTech para a Minami Service",p_sub:"O que a loja ganha, o que entra em cada etapa e o que fica pra depois. Sem promessa além do que está nesta página.",p_what:"O que entra",p_i1:"Site próprio com estoque e uma página pra cada carro",p_i2:"AIOS: o controle operacional da loja, com interessados, pré análises e agenda",p_i3:"Formulário de pré análise de financiamento no site",p_i4:"Link do site na bio do Instagram e no perfil do Google Maps",p_i5:"Página da loja no Facebook, separada do perfil pessoal",p_i6:"Cadastro de carro pelo celular, com status em um toque: disponível, reservado, vendido",p_how:"Como funciona",p_s1:"A SatoTech monta tudo com os dados e as fotos da loja",p_s2:"A loja confere a amostra e pede os ajustes",p_s3:"Entra no ar e os interessados passam a chegar organizados",p_not_t:"O que fica pra depois",p_not:"Atendente automático de WhatsApp é etapa futura, contratada à parte, só depois que a base estiver rodando bem.",p_price_t:"Valores e prazo",p_price:"A combinar com a SatoTech nesta conversa. Nenhum valor é cobrado antes da aprovação da amostra final.",p_foot:"Amostra preparada pela SatoTech para avaliação da Minami Service."},
+en:{t_site:"Website",t_aios:"AIOS",t_prop:"Proposal",hero_kicker:"Kosai · Shizuoka · since 2014",hero_title:"Used cars in Kosai, with in-house financing",hero_sub:"No permanent visa and no guarantor needed, with a quick review. The same shop also handles mechanics, shaken and car rental.",hero_cta1:"See the stock",hero_cta2:"Simulate financing",stat1:"Google rating, 33 reviews",stat2:"selling and servicing cars in the area",stat3:"cars in this stock sample",stock_title:"Stock",stock_sub:"Cars and prices from the shop's real Instagram ads. In the final version, each car goes online with photos taken at the yard and leaves the site the moment it sells.",search_ph:"Search by model...",f_all:"All",f_kei:"Kei",f_compact:"Compact",f_sedan:"Sedan",f_van:"Van / work",f_ev:"Electric",no_cars:"No car found for that search.",status_avail:"Available",btn_interest:"I am interested",ft_hybrid:"Hybrid",ft_screen:"Multimedia screen",ft_seats:"Black cloth seats",ft_sliding:"Automatic sliding doors",ft_cam360:"360° camera",ft_push:"Push start",ft_heated:"Heated seat",ft_manual:"6-speed manual",ft_awd:"4WD",ft_leather:"Leather seats",ft_camera:"Rear camera",ft_turbo:"Turbo",ft_blackroof:"Black roof",ft_hightop:"High roof",ft_workfun:"Work and leisure",ft_electric:"100% electric",ft_quiet:"Quiet",ft_lowcost:"Low cost per km",fin_title:"Financing without a permanent visa",fin_sub:"Fill in the pre-check form. The shop replies on WhatsApp with the result and the terms.",fin_p1:"In-house and Japanese financing",fin_p2:"No guarantor",fin_p3:"Reviewed directly by the shop, no bank bureaucracy",fm_name:"Name",fm_wa:"WhatsApp",fm_visa:"Visa type",v_perm:"Permanent",v_long:"Long-term resident (Teijusha)",v_spouse:"Spouse of Japanese / permanent resident",v_work:"Work visa",v_other:"Other",fm_time:"Time in Japan",tm_1:"Less than 1 year",tm_13:"1 to 3 years",tm_35:"3 to 5 years",tm_5:"More than 5 years",fm_guar:"Do you have a guarantor?",yes:"Yes",no:"No",fm_down:"Down payment (¥)",fm_car:"Car of interest",fm_other_car:"Another car / not sure yet",fm_send:"Send pre-check",form_ok:"Received. In the real version, this request lands in the shop's AIOS and the reply goes to your WhatsApp.",form_note:"SatoTech sample: submission is simulated. Nothing is saved or actually sent.",svc_title:"The shop also does",sv_mech:"General mechanics",sv_mech_d:"Maintenance and repair for your car",sv_shaken:"Shaken and transfer",sv_shaken_d:"Paperwork handled at the shop",sv_tire:"New and used tires",sv_tire_d:"Replacement and balancing",sv_rent:"Car rental",sv_rent_d:"For when yours is in the shop",sv_ins:"Car insurance",sv_ins_d:"Quotes and sign-up at the shop",sv_tow:"Towing",sv_tow_d:"Help when your car stops",rev_text:"Minami Service's Google rating, from 33 customer reviews. People who bought here recommend it.",rev_cta:"See on Google Maps",ct_title:"Talk to the shop",ct_addr:"Address",ct_phone:"Phone / WhatsApp",ct_hours:"Hours",ct_hours_v:"Mon to Fri 9am to 7pm · Sat 9am to 6pm · Sun closed",ct_wa:"Message on WhatsApp",ct_ig:"Shop's Instagram",foot_note:"Sample made by SatoTech with the shop's public data (Instagram and Google, November 2026). Illustrative photos of the advertised models. Availability and prices: please confirm with the shop.",a_demo:"Demo data",a_title:"Minami Service AIOS",a_sub:"The shop's operational control: stock, leads, financing pre-checks and the workshop schedule in one place.",a_k1:"cars listed",a_k2:"new leads",a_k3:"pending pre-checks",a_k4:"shaken due in 30 days",a_leads:"Leads (example)",a_th_who:"Who",a_th_car:"Car",a_th_st:"Stage",ld_1:"Example: lead from the website",ld_2:"Example: pre-check sent",ld_3:"Example: financing approved",ld_4:"Example: sale closed",st_new:"New",st_an:"Under review",st_ap:"Approved",st_sold:"Sold",a_agenda:"Workshop schedule",ag_1d:"Today",ag_1:"Oil change and check-up, shop customer",ag_2d:"Tomorrow",ag_2:"Full shaken, car sold by the shop",ag_3d:"In 9 days",ag_3:"Shaken expiring: reminder already set for the customer",a_funnel:"Sales funnel",fu_site:"came from the website",fu_ig:"came from Instagram",fu_pre:"pre-check sent",fu_ok:"waiting for down payment",fu_done:"delivery scheduled",a_foot:"AIOS demo screen with example data. In the real version, leads from the website and the form arrive here on their own.",p_title:"SatoTech proposal for Minami Service",p_sub:"What the shop gets, what is included in each step and what comes later. No promise beyond what is on this page.",p_what:"What is included",p_i1:"Own website with stock and one page per car",p_i2:"AIOS: the shop's operational control, with leads, pre-checks and schedule",p_i3:"Financing pre-check form on the website",p_i4:"Website link in the Instagram bio and on the Google Maps profile",p_i5:"A Facebook Page for the shop, separate from the personal profile",p_i6:"Car registration from the phone, with one-tap status: available, reserved, sold",p_how:"How it works",p_s1:"SatoTech builds everything with the shop's data and photos",p_s2:"The shop reviews the sample and asks for adjustments",p_s3:"It goes live and leads start arriving organized",p_not_t:"What comes later",p_not:"An automatic WhatsApp attendant is a future step, contracted separately, only after the base is running well.",p_price_t:"Price and timeline",p_price:"To be agreed with SatoTech in this conversation. Nothing is charged before the final sample is approved.",p_foot:"Sample prepared by SatoTech for Minami Service's review."},
+ja:{t_site:"サイト",t_aios:"AIOS",t_prop:"提案",hero_kicker:"湖西市 · 静岡県 · 2014年から",hero_title:"湖西市の中古車販売、自社ローン対応",hero_sub:"永住ビザなし、保証人なしでも相談できます。審査はスピーディー。整備、車検、レンタカーも同じお店で。",hero_cta1:"在庫を見る",hero_cta2:"ローンをシミュレーション",stat1:"Google評価、口コミ33件",stat2:"この地域で車の販売と整備を続けています",stat3:"この在庫サンプルの台数",stock_title:"在庫",stock_sub:"お店の実際のInstagram広告の車両と価格です。正式版では、店舗で撮影した写真で掲載し、売れたらすぐにサイトから外れます。",search_ph:"車種で検索...",f_all:"すべて",f_kei:"軽自動車",f_compact:"コンパクト",f_sedan:"セダン",f_van:"バン / 仕事用",f_ev:"電気自動車",no_cars:"その検索では車が見つかりませんでした。",status_avail:"販売中",btn_interest:"興味があります",ft_hybrid:"ハイブリッド",ft_screen:"マルチメディア画面",ft_seats:"黒い布シート",ft_sliding:"電動スライドドア",ft_cam360:"360°カメラ",ft_push:"プッシュスタート",ft_heated:"シートヒーター",ft_manual:"6速マニュアル",ft_awd:"4WD",ft_leather:"革シート",ft_camera:"バックカメラ",ft_turbo:"ターボ",ft_blackroof:"黒いルーフ",ft_hightop:"ハイルーフ",ft_workfun:"仕事とレジャー",ft_electric:"100%電気",ft_quiet:"静か",ft_lowcost:"km単価が安い",fin_title:"永住ビザなしでもローン相談",fin_sub:"事前審査フォームにご記入ください。結果と条件はWhatsAppでお店から返信します。",fin_p1:"自社ローンと日本のローンに対応",fin_p2:"保証人なし",fin_p3:"銀行の手続きなし、お店が直接審査",fm_name:"お名前",fm_wa:"WhatsApp",fm_visa:"ビザの種類",v_perm:"永住者",v_long:"定住者",v_spouse:"日本人・永住者の配偶者",v_work:"就労ビザ",v_other:"その他",fm_time:"日本の滞在期間",tm_1:"1年未満",tm_13:"1〜3年",tm_35:"3〜5年",tm_5:"5年以上",fm_guar:"保証人はいますか？",yes:"はい",no:"いいえ",fm_down:"頭金（¥）",fm_car:"気になる車",fm_other_car:"その他の車 / まだ決めていない",fm_send:"事前審査を送る",form_ok:"受け付けました。正式版では、この依頼はお店のAIOSに届き、返信はWhatsAppに届きます。",form_note:"SatoTechのサンプルです。送信は仮のもので、実際には保存も送信もされません。",svc_title:"お店ではこんなことも",sv_mech:"一般整備",sv_mech_d:"お車の点検と修理",sv_shaken:"車検・名義変更",sv_shaken_d:"書類手続きはお店で対応",sv_tire:"新品・中古タイヤ",sv_tire_d:"交換とバランス調整",sv_rent:"レンタカー",sv_rent_d:"愛車が入院中の代わりに",sv_ins:"自動車保険",sv_ins_d:"見積もりと契約はお店で",sv_tow:"レッカー",sv_tow_d:"車が止まったときの救援",rev_text:"Minami ServiceのGoogle評価です。お客様の口コミ33件。買った人が勧めるお店です。",rev_cta:"Googleマップで見る",ct_title:"お店に連絡",ct_addr:"住所",ct_phone:"電話 / WhatsApp",ct_hours:"営業時間",ct_hours_v:"月〜金 9時〜19時 · 土 9時〜18時 · 日曜定休",ct_wa:"WhatsAppで連絡",ct_ig:"お店のInstagram",foot_note:"SatoTechがお店の公開データ（InstagramとGoogle、2026年11月）で作ったサンプルです。写真は掲載モデルのイメージです。在庫と価格はお店にご確認ください。",a_demo:"デモデータ",a_title:"Minami ServiceのAIOS",a_sub:"お店の運営管理：在庫、見込み客、ローン事前審査、整備の予定をひとつの場所で。",a_k1:"掲載中の車",a_k2:"新しい見込み客",a_k3:"保留中の事前審査",a_k4:"30日以内に切れる車検",a_leads:"見込み客（例）",a_th_who:"誰が",a_th_car:"車",a_th_st:"段階",ld_1:"例：サイトからの見込み客",ld_2:"例：事前審査を送信済み",ld_3:"例：ローン承認済み",ld_4:"例：成約済み",st_new:"新規",st_an:"審査中",st_ap:"承認",st_sold:"成約",a_agenda:"整備の予定",ag_1d:"今日",ag_1:"オイル交換と点検、お店のお客様",ag_2d:"明日",ag_2:"車検一式、お店で売った車",ag_3d:"9日後",ag_3:"車検期限が近い：お客様へのリマインド設定済み",a_funnel:"販売の流れ",fu_site:"サイトから",fu_ig:"Instagramから",fu_pre:"事前審査を送信",fu_ok:"頭金待ち",fu_done:"納車予定あり",a_foot:"AIOSのデモ画面で、データは例です。正式版では、サイトとフォームからの見込み客が自動でここに入ります。",p_title:"Minami ServiceへのSatoTechの提案",p_sub:"お店が得るもの、各段階で入るもの、後回しにするもの。このページに書いたこと以上の約束はしません。",p_what:"含まれるもの",p_i1:"在庫つき自社サイト、車ごとに1ページ",p_i2:"AIOS：見込み客、事前審査、予定を管理するお店の運営システム",p_i3:"サイト上のローン事前審査フォーム",p_i4:"InstagramのプロフィールとGoogleマップへのサイトリンク",p_i5:"個人プロフィールとは別の、お店のFacebookページ",p_i6:"スマホから車を登録、ステータスはワンタップ：販売中、予約済み、成約",p_how:"進め方",p_s1:"SatoTechがお店のデータと写真で全部組み立てます",p_s2:"お店がサンプルを確認し、修正を依頼します",p_s3:"公開すると、見込み客が整理されて届くようになります",p_not_t:"後回しにするもの",p_not:"WhatsAppの自動応対は将来の段階で、別契約です。土台が安定してからにします。",p_price_t:"価格と納期",p_price:"この会話の中でSatoTechと相談して決めます。最終サンプルの承認前に請求することはありません。",p_foot:"Minami Serviceの確認用にSatoTechが用意したサンプルです。"},
+es:{t_site:"Sitio",t_aios:"AIOS",t_prop:"Propuesta",hero_kicker:"Kosai · Shizuoka · desde 2014",hero_title:"Autos usados en Kosai, con financiación propia",hero_sub:"Sin visa permanente y sin garante, con análisis rápido. Y la misma tienda se encarga de mecánica, shaken y alquiler de autos.",hero_cta1:"Ver el stock",hero_cta2:"Simular financiación",stat1:"nota en Google, 33 reseñas",stat2:"vendiendo y cuidando autos en la región",stat3:"autos en esta muestra de stock",stock_title:"Stock",stock_sub:"Autos y precios de los anuncios reales de la tienda en Instagram. En la versión final, cada auto entra con las fotos tomadas en el patio y sale del sitio en cuanto se vende.",search_ph:"Buscar por modelo...",f_all:"Todos",f_kei:"Kei",f_compact:"Compactos",f_sedan:"Sedán",f_van:"Van / trabajo",f_ev:"Eléctrico",no_cars:"Ningún auto encontrado en esa búsqueda.",status_avail:"Disponible",btn_interest:"Me interesa",ft_hybrid:"Híbrido",ft_screen:"Pantalla multimedia",ft_seats:"Asientos de tela negra",ft_sliding:"Puertas corredizas automáticas",ft_cam360:"Cámara 360°",ft_push:"Arranque por botón",ft_heated:"Asiento con calefacción",ft_manual:"Manual de 6 marchas",ft_awd:"4x4",ft_leather:"Asientos de cuero",ft_camera:"Cámara trasera",ft_turbo:"Turbo",ft_blackroof:"Techo negro",ft_hightop:"Techo alto",ft_workfun:"Trabajo y paseo",ft_electric:"100% eléctrico",ft_quiet:"Silencioso",ft_lowcost:"Bajo costo por km",fin_title:"Financiación sin visa permanente",fin_sub:"Complete el análisis previo. La tienda responde por WhatsApp con el resultado y las condiciones.",fin_p1:"Financiación propia y japonesa",fin_p2:"Sin garante",fin_p3:"Análisis directo con la tienda, sin burocracia de banco",fm_name:"Nombre",fm_wa:"WhatsApp",fm_visa:"Tipo de visa",v_perm:"Permanente",v_long:"Residente de largo plazo (Teijusha)",v_spouse:"Cónyuge de japonés o permanente",v_work:"Trabajo",v_other:"Otro",fm_time:"Tiempo en Japón",tm_1:"Menos de 1 año",tm_13:"1 a 3 años",tm_35:"3 a 5 años",tm_5:"Más de 5 años",fm_guar:"¿Tiene garante?",yes:"Sí",no:"No",fm_down:"Entrada (¥)",fm_car:"Auto de interés",fm_other_car:"Otro auto / todavía no sé",fm_send:"Enviar análisis previo",form_ok:"Recibido. En la versión real, este pedido llega al AIOS de la tienda y la respuesta va a su WhatsApp.",form_note:"Muestra de SatoTech: el envío es simulado. Nada se guarda ni se envía de verdad.",svc_title:"La tienda también hace",sv_mech:"Mecánica general",sv_mech_d:"Mantenimiento y reparación de su auto",sv_shaken:"Shaken y transferencia",sv_shaken_d:"Documentación resuelta en la tienda",sv_tire:"Neumáticos nuevos y usados",sv_tire_d:"Cambio y balanceo",sv_rent:"Alquiler de autos",sv_rent_d:"Para cuando el suyo está en el taller",sv_ins:"Seguro de auto",sv_ins_d:"Cotización y contratación en la tienda",sv_tow:"Grúa",sv_tow_d:"Auxilio cuando el auto se detiene",rev_text:"Nota de Minami Service en Google, con 33 reseñas de clientes. Quien compró, lo recomienda.",rev_cta:"Ver en Google Maps",ct_title:"Hable con la tienda",ct_addr:"Dirección",ct_phone:"Teléfono / WhatsApp",ct_hours:"Horario",ct_hours_v:"Lun a vie 9 a 19 h · Sáb 9 a 18 h · Dom cerrado",ct_wa:"Llamar por WhatsApp",ct_ig:"Instagram de la tienda",foot_note:"Muestra hecha por SatoTech con datos públicos de la tienda (Instagram y Google, noviembre de 2026). Fotos ilustrativas de los modelos anunciados. Disponibilidad y precios: confirmar con la tienda.",a_demo:"Datos de demostración",a_title:"AIOS de Minami Service",a_sub:"El control operativo de la tienda: stock, interesados, análisis previos y agenda del taller en un solo lugar.",a_k1:"autos publicados",a_k2:"interesados nuevos",a_k3:"análisis previos pendientes",a_k4:"shaken que vence en 30 días",a_leads:"Interesados (ejemplo)",a_th_who:"Quién",a_th_car:"Auto",a_th_st:"Etapa",ld_1:"Ejemplo: interesado por el sitio",ld_2:"Ejemplo: análisis previo enviado",ld_3:"Ejemplo: financiación aprobada",ld_4:"Ejemplo: venta cerrada",st_new:"Nuevo",st_an:"En análisis",st_ap:"Aprobado",st_sold:"Vendido",a_agenda:"Agenda del taller",ag_1d:"Hoy",ag_1:"Cambio de aceite y revisión, cliente de la tienda",ag_2d:"Mañana",ag_2:"Shaken completo, auto vendido por la tienda",ag_3d:"En 9 días",ag_3:"Shaken por vencer: aviso ya marcado para el cliente",a_funnel:"Embudo de ventas",fu_site:"vino del sitio",fu_ig:"vino de Instagram",fu_pre:"análisis previo enviado",fu_ok:"esperando la entrada",fu_done:"entrega marcada",a_foot:"Pantalla de demostración del AIOS con datos de ejemplo. En la versión real, los interesados del sitio y del formulario llegan aquí solos.",p_title:"Propuesta de SatoTech para Minami Service",p_sub:"Lo que gana la tienda, lo que entra en cada etapa y lo que queda para después. Sin promesas más allá de lo que está en esta página.",p_what:"Lo que incluye",p_i1:"Sitio propio con stock y una página para cada auto",p_i2:"AIOS: el control operativo de la tienda, con interesados, análisis previos y agenda",p_i3:"Formulario de análisis previo de financiación en el sitio",p_i4:"Enlace del sitio en la bio de Instagram y en el perfil de Google Maps",p_i5:"Página de Facebook de la tienda, separada del perfil personal",p_i6:"Registro de autos desde el celular, con estado en un toque: disponible, reservado, vendido",p_how:"Cómo funciona",p_s1:"SatoTech arma todo con los datos y las fotos de la tienda",p_s2:"La tienda revisa la muestra y pide los ajustes",p_s3:"Sale al aire y los interesados empiezan a llegar organizados",p_not_t:"Lo que queda para después",p_not:"El atendente automático de WhatsApp es una etapa futura, contratada aparte, solo cuando la base esté funcionando bien.",p_price_t:"Valores y plazo",p_price:"A acordar con SatoTech en esta conversación. No se cobra ningún valor antes de la aprobación de la muestra final.",p_foot:"Muestra preparada por SatoTech para evaluación de Minami Service."},
+tl:{t_site:"Site",t_aios:"AIOS",t_prop:"Proposal",hero_kicker:"Kosai · Shizuoka · mula 2014",hero_title:"Mga used na kotse sa Kosai, may sariling financing",hero_sub:"Hindi kailangan ng permanent visa at walang guarantor, mabilis ang review. Ang parehong shop ang bahala sa mekaniko, shaken at car rental.",hero_cta1:"Tingnan ang stock",hero_cta2:"Mag-simulate ng financing",stat1:"rating sa Google, 33 reviews",stat2:"nagtitinda at nag-aalaga ng kotse sa lugar",stat3:"kotse sa sample ng stock na ito",stock_title:"Stock",stock_sub:"Mga kotse at presyo mula sa tunay na Instagram ads ng shop. Sa final na bersyon, bawat kotse ay may litratong kuha sa yard at agad naaalis sa site kapag nabenta.",search_ph:"Maghanap ayon sa modelo...",f_all:"Lahat",f_kei:"Kei",f_compact:"Compact",f_sedan:"Sedan",f_van:"Van / trabaho",f_ev:"Electric",no_cars:"Walang kotse na nakita sa hanap na iyan.",status_avail:"Available",btn_interest:"Interesado ako",ft_hybrid:"Hybrid",ft_screen:"Multimedia screen",ft_seats:"Itim na cloth seats",ft_sliding:"Automatic sliding doors",ft_cam360:"360° camera",ft_push:"Push start",ft_heated:"Heated seat",ft_manual:"6-speed manual",ft_awd:"4WD",ft_leather:"Leather seats",ft_camera:"Rear camera",ft_turbo:"Turbo",ft_blackroof:"Itim na bubong",ft_hightop:"Mataas na bubong",ft_workfun:"Trabaho at pasyal",ft_electric:"100% electric",ft_quiet:"Tahimik",ft_lowcost:"Mababa ang gastos bawat km",fin_title:"Financing kahit walang permanent visa",fin_sub:"Punan ang pre-check. Sasagot ang shop sa WhatsApp kasama ang resulta at mga kondisyon.",fin_p1:"Sariling financing at Japanese financing",fin_p2:"Walang guarantor",fin_p3:"Direktang review ng shop, walang burukrasya ng bangko",fm_name:"Pangalan",fm_wa:"WhatsApp",fm_visa:"Uri ng visa",v_perm:"Permanent",v_long:"Long-term resident (Teijusha)",v_spouse:"Asawa ng Japanese / permanent resident",v_work:"Work visa",v_other:"Iba pa",fm_time:"Tagal sa Japan",tm_1:"Wala pang 1 taon",tm_13:"1 hanggang 3 taon",tm_35:"3 hanggang 5 taon",tm_5:"Higit sa 5 taon",fm_guar:"May guarantor ka ba?",yes:"Oo",no:"Wala",fm_down:"Down payment (¥)",fm_car:"Kotseng interesado ka",fm_other_car:"Ibang kotse / hindi pa sigurado",fm_send:"Ipadala ang pre-check",form_ok:"Natanggap. Sa tunay na bersyon, diretso itong pupunta sa AIOS ng shop at sa WhatsApp mo ang sagot.",form_note:"Sample ng SatoTech: kunwari lang ang pagpapadala. Walang sine-save o tunay na ipinapadala.",svc_title:"Ginagawa rin ng shop",sv_mech:"General mechanics",sv_mech_d:"Maintenance at pagkukumpuni ng kotse mo",sv_shaken:"Shaken at transfer",sv_shaken_d:"Mga papeles, inaasikaso sa shop",sv_tire:"Bago at used na gulong",sv_tire_d:"Palit at balancing",sv_rent:"Car rental",sv_rent_d:"Para habang nasa shop ang kotse mo",sv_ins:"Car insurance",sv_ins_d:"Quote at sign-up sa shop",sv_tow:"Towing",sv_tow_d:"Tulong kapag tumigil ang kotse",rev_text:"Rating ng Minami Service sa Google, mula sa 33 reviews ng mga customer. Inirerekomenda ng mga bumili dito.",rev_cta:"Tingnan sa Google Maps",ct_title:"Kausapin ang shop",ct_addr:"Address",ct_phone:"Telepono / WhatsApp",ct_hours:"Oras",ct_hours_v:"Lun hanggang Biy 9am-7pm · Sab 9am-6pm · Lin sarado",ct_wa:"Mag-message sa WhatsApp",ct_ig:"Instagram ng shop",foot_note:"Sample na ginawa ng SatoTech gamit ang public na data ng shop (Instagram at Google, Nobyembre 2026). Mga larawan ay ilustrasyon ng mga modelong naka-advertise. Availability at presyo: pakikumpirma sa shop.",a_demo:"Demo data",a_title:"AIOS ng Minami Service",a_sub:"Ang operational control ng shop: stock, mga interesado, financing pre-checks at schedule ng talyer sa iisang lugar.",a_k1:"kotse na naka-post",a_k2:"bagong interesado",a_k3:"pending na pre-checks",a_k4:"shaken na mage-expire sa 30 araw",a_leads:"Mga interesado (halimbawa)",a_th_who:"Sino",a_th_car:"Kotse",a_th_st:"Stage",ld_1:"Halimbawa: interesado mula sa site",ld_2:"Halimbawa: naipadala ang pre-check",ld_3:"Halimbawa: aprubado ang financing",ld_4:"Halimbawa: sarado ang benta",st_new:"Bago",st_an:"Nire-review",st_ap:"Aprubado",st_sold:"Nabenta",a_agenda:"Schedule ng talyer",ag_1d:"Ngayon",ag_1:"Change oil at check-up, customer ng shop",ag_2d:"Bukas",ag_2:"Buong shaken, kotse na binenta ng shop",ag_3d:"Sa 9 na araw",ag_3:"Mage-expire ang shaken: naka-set na ang paalala sa customer",a_funnel:"Sales funnel",fu_site:"galing sa site",fu_ig:"galing sa Instagram",fu_pre:"naipadala ang pre-check",fu_ok:"naghihintay ng down payment",fu_done:"naka-schedule ang delivery",a_foot:"Demo screen ng AIOS na may halimbawang data. Sa tunay na bersyon, ang mga interesado mula sa site at form ay awtomatikong dito pumapasok.",p_title:"Proposal ng SatoTech para sa Minami Service",p_sub:"Ano ang makukuha ng shop, ano ang kasama sa bawat hakbang at ano ang mamaya na. Walang pangako lampas sa nakasulat sa page na ito.",p_what:"Ano ang kasama",p_i1:"Sariling website na may stock at isang page bawat kotse",p_i2:"AIOS: ang operational control ng shop, may mga interesado, pre-checks at schedule",p_i3:"Financing pre-check form sa website",p_i4:"Link ng website sa Instagram bio at sa Google Maps profile",p_i5:"Facebook Page ng shop, hiwalay sa personal profile",p_i6:"Pagrehistro ng kotse gamit ang cellphone, isang tap ang status: available, reserved, nabenta",p_how:"Paano ito gumagana",p_s1:"Binubuo ng SatoTech ang lahat gamit ang data at litrato ng shop",p_s2:"Tinitingnan ng shop ang sample at humihingi ng pagbabago",p_s3:"Magla-live ito at magsisimulang dumating nang organisado ang mga interesado",p_not_t:"Ano ang mamaya na",p_not:"Ang automatic na WhatsApp attendant ay susunod na hakbang, hiwalay ang kontrata, kapag maayos na ang base.",p_price_t:"Presyo at timeline",p_price:"Pag-uusapan kasama ang SatoTech sa usapang ito. Walang sisingilin bago aprubahan ang final na sample.",p_foot:"Sample na inihanda ng SatoTech para sa pagsusuri ng Minami Service."}
+};
+</script>
+<script>
+const CARS=[
+ {id:'fit',img:'img/fit.jpg',name:'Honda Fit Hybrid L Package',price:550000,km:'120.000 km',cat:'compact',tag:'hybrid',feats:['hybrid','screen','seats']},
+ {id:'tanto',img:'img/tanto.jpg',name:'Daihatsu Tanto Custom RS SAIII',price:1200000,km:'60.064 km',cat:'kei',tag:'turbo',feats:['sliding','cam360','push','heated']},
+ {id:'legacy',img:'img/legacy.jpg',name:'Subaru Legacy B4 2.5GT Turbo',price:1300000,km:'138.000 km',cat:'sedan',tag:'manual',feats:['manual','awd','leather','camera']},
+ {id:'nbox',img:'img/nbox.jpg',name:'Honda N-BOX Custom GL Turbo',price:950000,km:'115.000 km',cat:'kei',tag:'turbo',feats:['sliding','blackroof','seats']},
+ {id:'nvan',img:'img/nvan.jpg',name:'Honda N-VAN +STYLE FUN',price:1300000,km:'47.000 km',cat:'van',tag:'workfun',feats:['sliding','hightop','workfun']},
+ {id:'imiev',img:'img/imiev.jpg',name:'Mitsubishi i-MiEV',price:400000,km:'60.000 km',cat:'ev',tag:'electric',feats:['electric','quiet','lowcost']}
+];
+let LANG='pt', CAT='all';
+function waLink(car){
+ const msgs={pt:'Olá! Vi o '+car.name+' (¥'+car.price.toLocaleString('ja-JP')+') no site da Minami Service e tenho interesse.',
+ en:'Hello! I saw the '+car.name+' (¥'+car.price.toLocaleString('en-US')+') on the Minami Service website and I am interested.',
+ ja:'こんにちは。南サービスのサイトで'+car.name+'（¥'+car.price.toLocaleString('ja-JP')+'）を見て、興味があります。',
+ es:'Hola, vi el '+car.name+' (¥'+car.price.toLocaleString('es-ES')+') en el sitio de Minami Service y me interesa.',
+ tl:'Kumusta! Nakita ko ang '+car.name+' (¥'+car.price.toLocaleString('en-US')+') sa site ng Minami Service at interesado ako.'};
+ return 'https://wa.me/819085448882?text='+encodeURIComponent(msgs[LANG]);
+}
+function fmt(n){return '¥'+n.toLocaleString(LANG==='pt'?'pt-BR':LANG==='ja'?'ja-JP':LANG==='es'?'es-ES':'en-US')}
+function renderCars(){
+ const q=(document.getElementById('q').value||'').toLowerCase();
+ const box=document.getElementById('cars'); box.innerHTML='';
+ let count=0;
+ CARS.forEach(c=>{
+   if(CAT!=='all'&&c.cat!==CAT) return;
+   if(q && c.name.toLowerCase().indexOf(q)<0) return;
+   count++;
+   const el=document.createElement('article'); el.className='card';
+   el.innerHTML='<div class="ph"><img src="'+c.img+'" alt="'+c.name+'"><span class="badge">'+T('status_avail')+'</span></div>'+
+   '<div class="bd"><h3>'+c.name+'</h3><div class="price">'+fmt(c.price)+'</div>'+
+   '<div class="meta">'+c.km+' · '+T('ft_'+c.tag)+'</div>'+
+   '<div class="feats">'+c.feats.map(f=>'<span>'+T('ft_'+f)+'</span>').join('')+'</div>'+
+   '<a class="btn btn-wa" target="_blank" rel="noopener" href="'+waLink(c)+'">'+T('btn_interest')+'</a></div>';
+   box.appendChild(el);
+ });
+ document.getElementById('no-cars').style.display=count?'none':'block';
+ const sel=document.getElementById('fm-car');
+ const cur=sel.value;
+ sel.innerHTML=CARS.map(c=>'<option value="'+c.id+'">'+c.name+' · '+fmt(c.price)+'</option>').join('')+'<option value="other">'+T('fm_other_car')+'</option>';
+ if(cur) sel.value=cur;
+}
+function setCat(cat){CAT=cat;document.querySelectorAll('#cat-chips button').forEach(b=>b.classList.toggle('on',b.dataset.cat===cat));renderCars();}
+function showView(v){
+ ['site','aios','prop'].forEach(x=>{
+   document.getElementById('view-'+x).classList.toggle('on',x===v);
+   document.getElementById('sw-'+x).classList.toggle('on',x===v);
+ });
+ window.scrollTo({top:0});
+}
+function submitFin(e){e.preventDefault();document.getElementById('fin-ok').style.display='block';return false;}
+function T(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.pt[k]||k;}
+function setLang(l){
+ LANG=l; document.documentElement.lang=(l==='pt'?'pt-BR':l);
+ document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(I18N[l]&&I18N[l][k]) el.textContent=I18N[l][k];});
+ document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph'); if(I18N[l]&&I18N[l][k]) el.placeholder=I18N[l][k];});
+ renderCars();
+}
+renderCars();
+(function(){const p=new URLSearchParams(location.search);const v=p.get('view');if(v&&['site','aios','prop'].indexOf(v)>=0)showView(v);const l=p.get('lang');if(l&&I18N[l])setLang(l);})();
+</script>
+</body>
+</html>
